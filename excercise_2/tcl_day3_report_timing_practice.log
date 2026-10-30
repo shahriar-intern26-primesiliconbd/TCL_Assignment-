@@ -1,0 +1,129 @@
+========================================================================================================================
+                         CADENCE INNOVUS - REPORT_TIMING
+                         PRACTICE LOG (SYNTHETIC DATA)
+========================================================================================================================
+
+Design       : tvu_core
+Mode         : functional_func_slow_max
+Analysis     : Setup (max)
+Path Group   : reg2reg / reg2out / in2reg
+Corner       : slow_max
+Units        : time = ns, capacitance = pF, resistance = kohm
+Note         : Training example only. Values are synthetic and are not from a real design.
+
+========================================================================================================================
+Path 1: REG2REG - SETUP VIOLATION
+========================================================================================================================
+
+Startpoint: u_ctrl/state_reg[2]/Q
+            (rising edge-triggered flip-flop clocked by core_clk)
+Endpoint:   u_datapath/result_reg[7]/D
+            (rising edge-triggered flip-flop clocked by core_clk)
+
+Path Group: reg2reg
+Path Type:  max
+
+Point                                      Fanout   Cap     Slew    Delay    Time
+--------------------------------------------------------------------------------
+clock core_clk (rise edge)                                        0.000    0.000
+clock network delay (ideal)                                       0.080    0.080
+u_ctrl/state_reg[2]/CK (DFF_X1)                                   0.000    0.080 r
+u_ctrl/state_reg[2]/Q  (DFF_X1)             3       0.004   0.045   0.072    0.152 r
+net state_q[2]                                3       0.006   0.052   0.038    0.190 r
+u_decode/U17/Y (AND2_X1)                       2       0.005   0.049   0.061    0.251 r
+net decode_n17                                 2       0.008   0.061   0.049    0.300 r
+u_decode/U29/Y (AOI21_X1)                      1       0.006   0.058   0.084    0.384 f
+net select_n                                  1       0.010   0.073   0.066    0.450 f
+u_datapath/U44/Y (MUX2_X1)                     1       0.007   0.067   0.103    0.553 r
+net mux_to_sum                                1       0.009   0.078   0.074    0.627 r
+u_datapath/U61/Y (XOR2_X1)                     1       0.008   0.082   0.128    0.755 f
+net sum_to_result                             1       0.011   0.091   0.086    0.841 f
+u_datapath/result_reg[7]/D (DFF_X1)            1       0.006   0.064   0.000    0.841 f
+--------------------------------------------------------------------------------
+data arrival time                                                           0.841
+
+clock core_clk (rise edge)                                                 0.800
+clock network delay (ideal)                                                0.080
+clock reconvergence pessimism                                                0.000
+clock uncertainty                                                          -0.050
+library setup time                                                         -0.060
+--------------------------------------------------------------------------------
+data required time                                                          0.770
+data arrival time                                                         -0.841
+--------------------------------------------------------------------------------
+slack (VIOLATED)                                                          -0.071
+
+========================================================================================================================
+Path 2: REG2REG - POSITIVE SETUP SLACK
+========================================================================================================================
+
+Startpoint: u_pipe/stage1_reg[0]/Q
+            (rising edge-triggered flip-flop clocked by core_clk)
+Endpoint:   u_pipe/stage2_reg[0]/D
+            (rising edge-triggered flip-flop clocked by core_clk)
+
+Path Group: reg2reg
+Path Type:  max
+
+Point                                      Fanout   Cap     Slew    Delay    Time
+--------------------------------------------------------------------------------
+clock core_clk (rise edge)                                        0.000    0.000
+clock network delay (ideal)                                       0.065    0.065
+u_pipe/stage1_reg[0]/CK (DFF_X1)                                  0.000    0.065 r
+u_pipe/stage1_reg[0]/Q (DFF_X1)            1       0.003   0.038   0.052    0.117 r
+net stage1_q                                  1       0.004   0.041   0.021    0.138 r
+u_pipe/U12/Y (INV_X1)                          1       0.004   0.039   0.028    0.166 f
+net inv_stage1                                1       0.004   0.040   0.022    0.188 f
+u_pipe/U18/Y (NAND2_X1)                       1       0.005   0.044   0.046    0.234 r
+net stage2_d                                  1       0.005   0.046   0.026    0.260 r
+u_pipe/stage2_reg[0]/D (DFF_X1)               1       0.004   0.041   0.000    0.260 r
+--------------------------------------------------------------------------------
+data arrival time                                                           0.260
+
+clock core_clk (rise edge)                                                 1.000
+clock network delay (ideal)                                                0.065
+clock uncertainty                                                          -0.040
+library setup time                                                         -0.055
+--------------------------------------------------------------------------------
+data required time                                                          0.970
+data arrival time                                                         -0.260
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.710
+
+========================================================================================================================
+Path 3: IN2REG - SETUP VIOLATION
+========================================================================================================================
+
+Startpoint: input data_in[3]
+Endpoint:   u_capture/input_reg[3]/D
+            (rising edge-triggered flip-flop clocked by core_clk)
+
+Path Group: in2reg
+Path Type:  max
+
+Point                                      Fanout   Cap     Slew    Delay    Time
+--------------------------------------------------------------------------------
+input external delay                                                  0.420    0.420
+input transition                                                     0.080    0.500
+net data_in[3]                               2       0.012   0.110   0.095    0.595 r
+u_input/U7/Y (BUF_X1)                         2       0.009   0.082   0.067    0.662 r
+net input_buf3                                2       0.010   0.089   0.072    0.734 r
+u_input/U15/Y (OR2_X1)                        1       0.007   0.074   0.083    0.817 r
+net input_to_capture                          1       0.008   0.081   0.061    0.878 r
+u_capture/input_reg[3]/D (DFF_X1)             1       0.005   0.058   0.000    0.878 r
+--------------------------------------------------------------------------------
+data arrival time                                                           0.878
+
+clock core_clk (rise edge)                                                 1.000
+clock network delay (ideal)                                                0.070
+clock uncertainty                                                          -0.050
+library setup time                                                         -0.060
+input delay / external requirement adjustment                             -0.000
+--------------------------------------------------------------------------------
+data required time                                                          0.890
+data arrival time                                                         -0.878
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.012
+
+
+

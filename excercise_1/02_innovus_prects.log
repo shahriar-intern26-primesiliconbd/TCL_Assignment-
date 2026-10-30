@@ -1,0 +1,169 @@
+Cadence Innovus(TM) Implementation System.
+Copyright 2025 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version: v25.11-s102_1, built Wed Aug 27 13:03:08 PDT 2025
+Options: -batch -stylus -log logs/prects
+Date: Thu Apr  2 08:18:39 2026
+Host: od-r7a-2xl-dy-od-64-gb-8-cores-2
+OS: Rocky Linux 8.10
+
+License:
+    [08:18:39.168425] Configured Lic search path: 27000@tlicmgr.example.net
+    invs Innovus Implementation System 25.1 checkout succeeded
+    8 CPU jobs allowed with the current license(s).
+
+**WARN: (IMPSYT-1507): The display is invalid and will start in no window mode
+Info: Process UID = 53116 / fa9200eb / weWmoUp7FA
+
+**INFO: MMMC transition support version v31-84
+
+init_flow summary:
+    Flow script        : scripts/flow_net_pnr.yaml
+    From               : implementation.prects.block_start
+    To                 : implementation.prects.schedule_prects_report_prects
+    Starting database  : dbs/floorplan.enc
+    Run tag            : top.run2
+
+WARNING: failed to get lock on flow file scripts/flow_net_pnr.yaml
+WARNING: failed to get lock on design yaml file scripts/setup_pnr.yaml
+Sourcing flow scripts done.
+
+#@ Begin verbose flow_step activate_views
+    set_analysis_view -setup {func_ss_0p675_125c func_ff_0p825_m40c}
+    set_analysis_view -hold {func_ff_0p825_m40c func_ss_0p675_125c}
+#@ End verbose flow_step activate_views
+
+#@ Begin verbose flow_step init_mcpu
+    set_multi_cpu_usage -local_cpu 8
+#@ End verbose flow_step init_mcpu
+
+#@ Begin load design ... (date=04/02 08:18:59, mem=1875.2M)
+
+**WARN: (IMPDBTCL-321): The attribute 'timing_aocv_enable_gba_combine_launch_capture' still works but will be obsolete in a future major release.
+**WARN: (IMPDBTCL-321): The attribute 'timing_enable_backward_compatible_latch_thru_mt_mode' still works but will be obsolete in a future major release.
+**WARN: (IMPDB-6501): "set_db design_process_node" will be obsoleted in future release.
+
+## Process: 4 (User Set)
+## Node: S4 (User Set)
+
+Applying the recommended capacitance filtering threshold values for 4nm process node:
+    total_c_th=0
+    relative_c_th=1
+    coupling_c_th=0.1
+Capacitance filtering mode: relative_and_coupling
+
+Loading design 'top' saved by 'Innovus' '25.11-s102_1'.
+Starting library reading in Multi-threaded flow with 8 threads.
+
+Reading lib_slow_m40c timing library stdcells_lvt_sspg.lib_ccs.gz
+**WARN: (TECHLIB-1345): Library contains both multi-segmented CCS receiver capacitance models and older two-piece receiver capacitance models. Multi-segmented models will be used.
+**WARN: (TECHLIB-1398): output_current_fall waveform in cell 'AOI2222_X1' has a long tail. Last points will be ignored and waveform completed using extrapolation.
+**WARN: (TECHLIB-1321): attribute 'related_ccb_node' is not specified in group 'input_ccb' on pin 'S0' of cell 'MXIT2_X1'.
+Message <TECHLIB-1398> has exceeded the message display limit of '20'.
+Message <TECHLIB-1321> has exceeded the message display limit of '20'.
+
+Read 1,797 cells in library stdcells_lvt_sspg.
+Read 1,812 cells in library stdcells_slvt_sspg.
+Read 1,784 cells in library stdcells_lvt_ffpg.
+Read 1,798 cells in library stdcells_slvt_ffpg.
+
+Design statistics:
+    Instances                 : 2,510,383
+    Nets                      : 2,184,731
+    Sequential instances      :   611,442
+    Combinational instances   : 1,898,941
+    Clock-gating cells        :    18,207
+    Buffers/inverters         :   231,506
+
+**ERROR: (IMPTS-432): Units must be set before the design is read and constraints are loaded. This command is ignored.
+**ERROR: (IMPTS-432): Units must be set before the design is read and constraints are loaded. This command is ignored.
+
+Info: set_db add_tieoffs_cells setting detected. Placed tie cells will be deleted before placement.
+Info: User setting to run inv-resyn!
+
+#@ Begin prects initialization
+Reading floorplan database...
+Restoring placement...
+Restoring route...
+Restoring power grid...
+
+Checking design consistency...
+    Unconnected input pins          : 0
+    Unconnected output pins         : 2
+    Floating nets                   : 0
+    Nets with multiple drivers     : 0
+    Missing cell masters            : 0
+
+**WARN: (IMPLIB-220): 2 output pins are not connected in the current database.
+**WARN: (IMPCT-405): 14 clock pins have no propagated clock at this point.
+
+Timing setup:
+    Setup analysis views          : 2
+    Hold analysis views           : 2
+    Clock definitions             : 14
+    Generated clocks              : 38
+    Clock uncertainty setup       : 160 ps
+    Clock uncertainty hold        : 40 ps
+
+Initial timing:
+    View                         WNS(ps)      TNS(ps)      Violating endpoints
+    func_ss_0p675_125c          -184.2       -126540.7          18432
+    func_ff_0p825_m40c            12.8            0.0              0
+
+Placement:
+    Std cell utilization         : 66.42 %
+    Full utilization             : 76.76 %
+    Density overflow             : 0.00 %
+    Legalization violations      : 0
+
+Early global-route congestion:
+    M1 overflow                  : 105
+    M2 overflow                  : 0
+    M3 overflow                  : 1
+    Max hotspot                  : 3.47
+    Total hotspot area           : 1795.30
+
+**WARN: (IMPGR-118): Local routing congestion detected near bbox (601.47,552.70)-(609.60,560.83).
+**WARN: (IMPGR-121): M1 horizontal demand exceeds available tracks in one or more global-route bins.
+
+Optimization:
+    design_flow_effort           : standard
+    opt_all_end_points           : true
+    congestion_aware_buffering   : enabled
+    useful_skew                  : enabled
+
+#@ Begin place_opt_design
+Info: Initial placement timing WNS = -184.2 ps
+Info: Initial placement TNS = -126540.7 ps
+Info: Global placement completed.
+Info: Timing-driven placement completed.
+Info: Congestion-driven placement completed.
+
+Post-placement QoR:
+    Setup WNS                    : -92.6 ps
+    Setup TNS                    : -48217.4 ps
+    Hold WNS                     :  18.4 ps
+    Hold TNS                     :      0.0 ps
+    Max transition violations    : 217
+    Max capacitance violations   : 31
+    Max fanout violations        : 8
+
+**WARN: (IMPDRV-302): 217 max-transition violations remain after placement optimization.
+**WARN: (IMPDRV-303): 31 max-capacitance violations remain after placement optimization.
+
+**ERROR: (IMPSP-9100): Scan chains exist in this design but are not defined for 0.00% flops and -place_global_ignore_scan is false. Placement and timing QoR can be severely impacted.
+
+Route estimate:
+    Estimated wirelength         : 182.4 mm
+    Estimated via count          : 8.72 M
+    Estimated congestion         : 0.81
+
+*** Completed place_opt_design (cpu=0:18:42.1 real=0:11:36.5 mem=21.4G) ***
+
+#@ FLOW STATUS
+STEP=prects
+STATUS=COMPLETED_WITH_ERRORS
+EXIT_CODE=0
+NEXT_STEP=postcts
+
+

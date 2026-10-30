@@ -1,0 +1,18 @@
+15 | WARN | (IMPSYT-1507): The display is invalid and will start in no window mode
+27 | WARNING | failed to get lock on flow file scripts/flow_net_pnr.yaml
+28 | WARNING | failed to get lock on design yaml file scripts/setup_pnr.yaml
+42 | WARN | (IMPDBTCL-321): The attribute 'timing_aocv_enable_gba_combine_launch_capture' still works but will be obsolete in a future major release.
+43 | WARN | (IMPDBTCL-321): The attribute 'timing_enable_backward_compatible_latch_thru_mt_mode' still works but will be obsolete in a future major release.
+44 | WARN | (IMPDB-6501): "set_db design_process_node" will be obsoleted in future release.
+59 | WARN | (TECHLIB-1345): Library contains both multi-segmented CCS receiver capacitance models and older two-piece receiver capacitance models. Multi-segmented models will be used.
+60 | WARN | (TECHLIB-1398): output_current_fall waveform in cell 'AOI2222_X1' has a long tail. Last points will be ignored and waveform completed using extrapolation.
+61 | WARN | (TECHLIB-1321): attribute 'related_ccb_node' is not specified in group 'input_ccb' on pin 'S0' of cell 'MXIT2_X1'.
+78 | ERROR | (IMPTS-432): Units must be set before the design is read and constraints are loaded. This command is ignored.
+79 | ERROR | (IMPTS-432): Units must be set before the design is read and constraints are loaded. This command is ignored.
+97 | WARN | (IMPLIB-220): 2 output pins are not connected in the current database.
+98 | WARN | (IMPCT-405): 14 clock pins have no propagated clock at this point.
+126 | WARN | (IMPGR-118): Local routing congestion detected near bbox (601.47,552.70)-(609.60,560.83).
+127 | WARN | (IMPGR-121): M1 horizontal demand exceeds available tracks in one or more global-route bins.
+151 | WARN | (IMPDRV-302): 217 max-transition violations remain after placement optimization.
+152 | WARN | (IMPDRV-303): 31 max-capacitance violations remain after placement optimization.
+154 | ERROR | (IMPSP-9100): Scan chains exist in this design but are not defined for 0.00% flops and -place_global_ignore_scan is false. Placement and timing QoR can be severely impacted.
